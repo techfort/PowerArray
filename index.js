@@ -47,13 +47,17 @@ function format(s) {
   return (s[0] * 1e3 + s[1] / 1e6) / 1e3;
 }
 
+function ops_per_sec(s) {
+  return LEN / format(s);
+}
+
 console.log('Array.forEach');
 var s1 = process.hrtime();
 array.forEach(function (i) {
   i * 2;
 });
 var s2 = process.hrtime(s1);
-console.log('Array.forEach complete in ' + format(s2));
+console.log('Array.forEach complete in ' + format(s2) + ', ops/s: ' + ops_per_sec(s2));
 
 i = LEN;
 console.log('plain for loop');
@@ -62,7 +66,7 @@ while (i--) {
   array[i] * 2;
 }
 var s4 = process.hrtime(s3);
-console.log('For loop complete in ' + format(s4));
+console.log('For loop complete in ' + format(s4) + ', ops/s: ' + ops_per_sec(s4));
 
 console.log('PowerArray');
 var s5 = process.hrtime();
@@ -70,7 +74,7 @@ pwr.loop(function (i) {
   i * 2;
 });
 var s6 = process.hrtime(s5);
-console.log('PowerArray complete in ' + format(s6));
+console.log('PowerArray complete in ' + format(s6) + ', ops/s: ' + ops_per_sec(s6));
 
 
 console.log('SuperPowerArray');
@@ -79,4 +83,4 @@ sup.loop(function (i) {
   i * 2;
 });
 var s8 = process.hrtime(s7);
-console.log('SuperPowerArray complete in ' + format(s8));
+console.log('SuperPowerArray complete in ' + format(s8) + ', ops/s: ' + ops_per_sec(s8));
