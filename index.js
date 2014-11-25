@@ -33,8 +33,18 @@ function WrappedArray() {
     forEach: function (fun) {
       var i = array.length;
       while (i--) {
-        fun(array[i]);
+        fun(array[i], i);
       }
+    },
+    map: function (fun) {
+      var results = WrappedArray();
+      array.forEach(function (elem) {
+        results.push(fun(elem));
+      });
+      return results;
+    },
+    at: function (i) {
+      return array[i];
     }
   };
 }
