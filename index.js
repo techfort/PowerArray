@@ -2,8 +2,7 @@ function SuppedArray() {}
 
 SuppedArray.prototype = new Array;
 SuppedArray.prototype.forEach = function (fun) {
-  var len = this.length;
-  while (len--) {
+  for (var len = this.length; len--;) {
     fun(this[len]);
   }
 };
@@ -14,8 +13,7 @@ function SuperPowerArray(len) {
 
 SuperPowerArray.prototype = new Uint8Array;
 SuperPowerArray.prototype.forEach = function (fun) {
-  var i = this.length;
-  while (i--) {
+  for (var i = this.length; i--;) {
     fun(this[i]);
   }
 };
@@ -31,8 +29,7 @@ function PowerArray() {
   return {
     push: array.push,
     forEach: function (fun) {
-      var i = array.length;
-      while (i--) {
+      for (var i = this.length; i--;) {
         fun(array[i], i);
       }
     },
