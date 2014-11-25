@@ -1,7 +1,7 @@
-function PowerArray() {}
+function SuppedArray() {}
 
-PowerArray.prototype = new Array;
-PowerArray.prototype.forEach = function (fun) {
+SuppedArray.prototype = new Array;
+SuppedArray.prototype.forEach = function (fun) {
   var len = this.length;
   while (len--) {
     fun(this[len]);
@@ -25,7 +25,7 @@ SuperPowerArray.prototype.push = function (val) {
   this.usedLength += 1;
 };
 
-function WrappedArray() {
+function PowerArray() {
   var array = [];
 
   return {
@@ -37,7 +37,7 @@ function WrappedArray() {
       }
     },
     map: function (fun) {
-      var results = WrappedArray();
+      var results = PowerArray();
       array.forEach(function (elem) {
         results.push(fun(elem));
       });
@@ -50,7 +50,7 @@ function WrappedArray() {
 }
 
 module.exports = {
-  PowerArray: PowerArray,
+  SuppedArray: SuppedArray,
   SuperPowerArray: SuperPowerArray,
-  WrappedArray: WrappedArray
+  PowerArray: PowerArray
 };

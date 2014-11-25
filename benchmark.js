@@ -1,13 +1,13 @@
 var power = require('./index.js'),
-  PowerArray = power.PowerArray,
+  SuppedArray = power.SuppedArray,
   SuperPowerArray = power.SuperPowerArray;
 
 var i = 0,
   LEN = 1e7,
   array = [],
-  pwr = new PowerArray(),
+  supped = new SuppedArray(),
   sup = new SuperPowerArray(new ArrayBuffer(1e7)),
-  wa = power.WrappedArray();
+  pwr = power.PowerArray();
 
 function rand() {
   return Math.floor(Math.random() * 100 + 1);
@@ -25,9 +25,9 @@ console.log('Populating arrays...');
 for (i; i < LEN; i += 1) {
   var rnd = rand();
   array.push(rnd);
-  pwr.push(rnd);
+  supped.push(rnd);
   sup.push(rnd);
-  wa.push(rnd);
+  pwr.push(rnd);
   if (i === 1e6) {
     console.log('10% complete');
   }
@@ -58,8 +58,6 @@ for (i; i < LEN; i += 1) {
 }
 console.log('100% complete');
 
-
-
 console.log('Array.forEach');
 var s1 = process.hrtime();
 array.forEach(function (i) {
@@ -86,29 +84,38 @@ var s8 = process.hrtime(s7);
 console.log('SuperPowerArray complete in ' + format(s8) + ', ops/s: ' + ops_per_sec(s8));
 
 
-console.log('WrappedArray');
-var s9 = process.hrtime();
-wa.forEach(function (i) {
-  i * 2;
-});
-var s10 = process.hrtime(s9);
-console.log('WrappedArray complete in ' + format(s10) + ', ops/s: ' + ops_per_sec(s10));
-
 console.log('PowerArray');
-var s5 = process.hrtime();
+var s9 = process.hrtime();
 pwr.forEach(function (i) {
   i * 2;
 });
-var s6 = process.hrtime(s5);
-console.log('PowerArray complete in ' + format(s6) + ', ops/s: ' + ops_per_sec(s6));
+var power_bm = process.hrtime(s9);
+console.log('PowerArray complete in ' + format(power_bm) + ', ops/s: ' + ops_per_sec(power_bm));
+console.log('---------------------------------------------------------------------------------');
+console.log('Power/Plain forEach ratio: ' + ops_per_sec(power_bm) / ops_per_sec(plain));
+console.log('---------------------------------------------------------------------------------');
+console.log('Power/ for-loop forEach ratio: ' + ops_per_sec(power_bm) / ops_per_sec(s4));
+console.log('---------------------------------------------------------------------------------');
 
-console.log('WrappedArray MAP');
+console.log('SuppedArray');
+var s5 = process.hrtime();
+supped.forEach(function (i) {
+  i * 2;
+});
+var s6 = process.hrtime(s5);
+console.log('SuppedArray complete in ' + format(s6) + ', ops/s: ' + ops_per_sec(s6));
+
+console.log('-------------');
+console.log('MAP benchmark');
+console.log('-------------')
+
+console.log('PowerArray MAP');
 var wamap = process.hrtime();
-wa.map(function (i) {
+pwr.map(function (i) {
   return i * 2;
 });
 var wamapend = process.hrtime(wamap);
-console.log('WrappedArray MAP complete in ' + format(wamapend) + ', ops/s: ' + ops_per_sec(wamapend));
+console.log('PowerArray MAP complete in ' + format(wamapend) + ', ops/s: ' + ops_per_sec(wamapend));
 
 console.log('Plain Array MAP');
 var map = process.hrtime();
@@ -117,5 +124,5 @@ array.map(function (i) {
 });
 var mapend = process.hrtime(map);
 console.log('Plain Array MAP complete in ' + format(mapend) + ', ops/s: ' + ops_per_sec(mapend));
-
-console.log('Wrapped/Plain Ratio: ' + (ops_per_sec(wamapend) / ops_per_sec(mapend)).toFixed(2));
+console.log('---------------------------------------------------------------------------------');
+console.log('Power/Plain Ratio: ' + (ops_per_sec(wamapend) / ops_per_sec(mapend)).toFixed(2));
