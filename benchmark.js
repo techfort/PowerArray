@@ -1,12 +1,13 @@
-var pwr = require('./index.js'),
-  PowerArray = pwr.PowerArray,
-  SuperPowerArray = pwr.SuperPowerArray;
+var power = require('./index.js'),
+  PowerArray = power.PowerArray,
+  SuperPowerArray = power.SuperPowerArray;
 
 var i = 0,
   LEN = 1e7,
   array = [],
   pwr = new PowerArray(),
-  sup = new SuperPowerArray(new ArrayBuffer(1e7));
+  sup = new SuperPowerArray(new ArrayBuffer(1e7)),
+  wa = power.WrappedArray();
 
 function rand() {
   return Math.floor(Math.random() * 100 + 1);
@@ -17,6 +18,7 @@ for (i; i < LEN; i += 1) {
   array.push(rnd);
   pwr.push(rnd);
   sup.push(rnd);
+  wa.push(rnd);
 }
 
 function format(s) {
@@ -44,15 +46,6 @@ while (i--) {
 var s4 = process.hrtime(s3);
 console.log('For loop complete in ' + format(s4) + ', ops/s: ' + ops_per_sec(s4));
 
-console.log('PowerArray');
-var s5 = process.hrtime();
-pwr.forEach(function (i) {
-  i * 2;
-});
-var s6 = process.hrtime(s5);
-console.log('PowerArray complete in ' + format(s6) + ', ops/s: ' + ops_per_sec(s6));
-
-
 console.log('SuperPowerArray');
 var s7 = process.hrtime();
 sup.forEach(function (i) {
@@ -60,3 +53,20 @@ sup.forEach(function (i) {
 });
 var s8 = process.hrtime(s7);
 console.log('SuperPowerArray complete in ' + format(s8) + ', ops/s: ' + ops_per_sec(s8));
+
+
+console.log('WrappedArray');
+var s9 = process.hrtime();
+wa.forEach(function (i) {
+  i * 2;
+});
+var s10 = process.hrtime(s9);
+console.log('WrappedArray complete in ' + format(s10) + ', ops/s: ' + ops_per_sec(s10));
+
+console.log('PowerArray');
+var s5 = process.hrtime();
+pwr.forEach(function (i) {
+  i * 2;
+});
+var s6 = process.hrtime(s5);
+console.log('PowerArray complete in ' + format(s6) + ', ops/s: ' + ops_per_sec(s6));

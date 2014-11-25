@@ -18,13 +18,29 @@ SuperPowerArray.prototype.forEach = function (fun) {
   while (i--) {
     fun(this[i]);
   }
-}
+};
+
 SuperPowerArray.prototype.push = function (val) {
-  this[0] = val;
+  this[this.usedLength] = val;
   this.usedLength += 1;
+};
+
+function WrappedArray() {
+  var array = [];
+
+  return {
+    push: array.push,
+    forEach: function (fun) {
+      var i = array.length;
+      while (i--) {
+        fun(array[i]);
+      }
+    }
+  };
 }
 
 module.exports = {
   PowerArray: PowerArray,
-  SuperPowerArray: SuperPowerArray
+  SuperPowerArray: SuperPowerArray,
+  WrappedArray: WrappedArray
 };
