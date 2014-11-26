@@ -20,6 +20,8 @@ PowerArray.map is averagely more than 10,000 times faster than Array.map
 
 This is only a proof of concept, future steps are re-creating Harmony 6 methods that depend on loops to improve speed.
 
+Install with `npm install powerarray`
+
 ## Proposed Usage
 
 Particularly useful for arrays that need processing on all elements often, or for numeric arrays utilized as indexes for Collections of data.
