@@ -26,11 +26,13 @@ Particularly useful for arrays that need processing on all elements often, or fo
 
 ## Methods
 
+All Array native methods are available through PowerArray. The following methods are either extending or overriding the native Array class.
+
 `PowerArray.forEach`: utilizes a for loop for iteration, takes a callback which receives an element and the index of that element.
 
 `PowerArray.map`: utilizes a for loop to return a PowerArray of mapped values, takes a callback processing function argument.
 
-`PowerArray.binarySearch`: performs a binary search on the elements of the array, only relevant if the array only consists of numbers. Thanks to [Oliver Caldwell's post](http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/) for a quick version of the algorithm.
+`PowerArray.binarySearch`: performs a binary search on the elements of the array, only relevant if the array only consists of numbers. Thanks to [Oliver Caldwell's post](http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/) for a quick version of the algorithm. Also note the contribution of Yehonatan and other authors of comments to the post which helped to optimise the implementation of binary search further. 
 
 `PowerArray.numericSort`: sorts array (if array only contains integers), useful for utilizing `binarySearch`.
 
