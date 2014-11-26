@@ -14,37 +14,46 @@ for (i = 0; i < len; i += 1) {
 So I rewrote the Array class as PowerArray and implemented the above mechanism in PowerArray.forEach with surprising results.
 
 The results are as follows:
-PowerArray.forEach is averagely 10k times faster than native Array.
-PowerArray.forEach is averagely 700 times faster than a plain while loop.
-PowerArray.map is averagely 1000 times faster than Array.map
+PowerArray.forEach is averagely 5~10,000 times faster than native Array.
+PowerArray.forEach is averagely 700 times faster than a plain for loop.
+PowerArray.map is averagely more than 10,000 times faster than Array.map
 
-This is only a proof of concept, if there's enough feedback, interest and if turns out there aren't too many drawbacks in the PowerArray methods as opposed to the native ones I will rewrite the missing methods.
+This is only a proof of concept, future steps are re-creating Harmony 6 methods that depend on loops to improve speed.
 
-This is a typical output from benchmark.js
+## Proposed Usage
+
+Particularly useful for arrays that need processing on all elements often, or for numeric arrays utilized as indexes for Collections of data.
+
+## Methods
+
+`PowerArray.forEach`: utilizes a for loop for iteration, takes a callback which receives an element and the index of that element.
+
+`PowerArray.map`: utilizes a for loop to return a PowerArray of mapped values, takes a callback processing function argument.
+
+`PowerArray.binarySearch`: performs a binary search on the elements of the array, only relevant if the array only consists of numbers. Thanks to [Oliver Caldwell's post](http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/) for a quick version of the algorithm.
+
+`PowerArray.numericSort': sorts array (if array only contains integers), useful for utilizing `binarySearch`.
+
+This is a typical output from benchmark.js (over 10,000,000 size arrays)
 
 ```
-Array.forEach
-Array.forEach complete in 0.542086324, ops/s: 1.84472464204797e+7
-plain for loop
-For loop complete in 0.033864642, ops/s: 2.9529324420438284e+8
-SuperPowerArray
-SuperPowerArray complete in 0.000078083, ops/s: 1.2806884981365982e+11
-PowerArray
-PowerArray complete in 0.00004868, ops/s: 2.0542317173377158e+11
+Array.forEach complete in 0.531276637, ops/s: 1.8822585642891727e+7
+For loop complete in 0.033897401, ops/s: 2.950078680073437e+8
+SuppedArray complete in 0.000090165, ops/s: 1.1090778018077968e+11
 ---------------------------------------------------------------------------------
-Power/Plain forEach ratio: 11135.709202958094
+Supped/ forEach ratio: 5892.271247157988
 ---------------------------------------------------------------------------------
-Power/ for-loop forEach ratio: 695.6582169268694
+Supped/ for-loop ratio: 375.9485498807741
 ---------------------------------------------------------------------------------
-SuppedArray
-SuppedArray complete in 0.059574822, ops/s: 1.6785614567174032e+8
+
+
 -------------
 MAP benchmark
 -------------
-PowerArray MAP
-PowerArray MAP complete in 0.0008962719999999999, ops/s: 1.1157327239945017e+10
 Plain Array MAP
-Plain Array MAP complete in 0.977588353, ops/s: 1.022925443957289e+7
+SuppedArray MAP
+
+Plain Array MAP complete in 1.09191071, ops/s: 9.158258004448e+6
 ---------------------------------------------------------------------------------
-Power/Plain Ratio: 1090.73
+Supped/Plain Ratio: 10292.40
 ```

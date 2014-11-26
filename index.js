@@ -1,3 +1,5 @@
+'use strict';
+
 function loop(fun) {
   var i = 0,
     len = this.length;
@@ -38,6 +40,36 @@ PowerArray.prototype.contains = function (elem) {
     }
   }
   return found;
+};
+
+PowerArray.prototype.numericSort = function () {
+  this.sort(function (a, b) {
+    return a.id < b.id ? -1 : 1;
+  });
+};
+
+// Binary Search method, only works if array is sorted.
+PowerArray.prototype.binarySearch = function (elem) {
+
+  var minIndex = 0;
+  var maxIndex = this.length - 1;
+  var currentIndex;
+  var currentElement;
+
+  while (minIndex <= maxIndex) {
+    currentIndex = (minIndex + maxIndex) / 2 | 0;
+    currentElement = this[currentIndex];
+
+    if (currentElement < searchElement) {
+      minIndex = currentIndex + 1;
+    } else if (currentElement > searchElement) {
+      maxIndex = currentIndex - 1;
+    } else {
+      return currentIndex;
+    }
+  }
+
+  return -1;
 };
 
 module.exports = PowerArray;
