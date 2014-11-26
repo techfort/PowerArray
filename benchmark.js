@@ -28,31 +28,31 @@ for (i; i < LEN; i += 1) {
   supped.push(rnd);
   sup.push(rnd);
   pwr.push(rnd);
-  if (i === 1e6) {
+  if (i === LEN / 10) {
     console.log('10% complete');
   }
-  if (i === 2e6) {
+  if (i === LEN / 10 * 2) {
     console.log('20% complete');
   }
-  if (i === 3e6) {
+  if (i === LEN / 10 * 3) {
     console.log('30% complete');
   }
-  if (i === 4e6) {
+  if (i === LEN / 10 * 4) {
     console.log('40% complete');
   }
-  if (i === 5e6) {
+  if (i === LEN / 10 * 5) {
     console.log('50% complete');
   }
-  if (i === 6e6) {
+  if (i === LEN / 10 * 6) {
     console.log('60% complete');
   }
-  if (i === 7e6) {
+  if (i === LEN / 10 * 7) {
     console.log('70% complete');
   }
-  if (i === 8e6) {
+  if (i === LEN / 10 * 8) {
     console.log('80% complete');
   }
-  if (i === 9e6) {
+  if (i === LEN / 10 * 9) {
     console.log('90% complete');
   }
 }

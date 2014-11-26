@@ -3,14 +3,14 @@
 Turns out that you can re-write some of the methods of Array to obtain a much better performance than the native methods.
 In particular, Array.forEach seems to perform pretty badly.
 
-Based on this [jsPerf](http://jsperf.com/fastest-array-loops-in-javascript/2) , it looks as if 
+It looks as if a for loop with cached length is the fastest way of iterating.
 ```javascript
-while(len--) {
+var i, len = array.length;
+for (i = 0; i < len; i += 1) {
   someFun(array[len]);
 }
 ```
 
-is the fastest way to iterate an array.
 So I rewrote the Array class as PowerArray and implemented the above mechanism in PowerArray.forEach with surprising results.
 
 The results are as follows:
