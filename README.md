@@ -32,7 +32,7 @@ Particularly useful for arrays that need processing on all elements often, or fo
 
 `PowerArray.binarySearch`: performs a binary search on the elements of the array, only relevant if the array only consists of numbers. Thanks to [Oliver Caldwell's post](http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/) for a quick version of the algorithm.
 
-`PowerArray.numericSort': sorts array (if array only contains integers), useful for utilizing `binarySearch`.
+`PowerArray.numericSort`: sorts array (if array only contains integers), useful for utilizing `binarySearch`.
 
 This is a typical output from benchmark.js (over 10,000,000 size arrays)
 
