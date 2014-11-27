@@ -16,7 +16,7 @@ So I rewrote the Array class as PowerArray and implemented the above mechanism i
 The results are as follows:
 PowerArray.forEach is averagely 5 times faster than native Array.
 
-This is only a proof of concept, future steps are re-creating Harmony 6 methods that depend on loops to improve speed.
+This is only a proof of concept.
 
 Install with `npm install powerarray`
 
