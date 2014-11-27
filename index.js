@@ -53,7 +53,7 @@ PowerArray.prototype.contains = function (elem) {
 
 PowerArray.prototype.numericSort = function () {
   this.sort(function (a, b) {
-    return a.id < b.id ? -1 : 1;
+    return a < b ? -1 : 1;
   });
 };
 
