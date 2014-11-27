@@ -7,7 +7,7 @@ It looks as if a for loop with cached length is the fastest way of iterating.
 ```javascript
 var i, len = array.length;
 for (i = 0; i < len; i += 1) {
-  someFun(array[len]);
+  someFun(array[i]);
 }
 ```
 
