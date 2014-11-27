@@ -22,6 +22,7 @@ for (i; i < LEN; i += 1) {
   var rnd = rand();
   array.push(rnd);
   supped.push(rnd);
+  //wrapped.push(rnd);
   if (i === LEN / 10) {
     console.log('10% complete');
   }
@@ -67,7 +68,6 @@ while (i--) {
 var forloop = process.hrtime(s3);
 console.log('For loop complete in ' + format(forloop) + ', ops/s: ' + ops_per_sec(forloop));
 
-
 var s5 = process.hrtime();
 supped.forEach(function (i) {
   i * 2;
@@ -78,30 +78,3 @@ console.log('SuppedArray complete in ' + format(supped_bm) + ', ops/s: ' + ops_p
 console.log('---------------------------------------------------------------------------------');
 console.log('Supped/ forEach ratio: ' + ops_per_sec(supped_bm) / ops_per_sec(plain));
 console.log('---------------------------------------------------------------------------------');
-console.log('Supped/ for-loop ratio: ' + ops_per_sec(supped_bm) / ops_per_sec(forloop));
-console.log('---------------------------------------------------------------------------------');
-
-console.log('\n\n');
-console.log('-------------');
-console.log('MAP benchmark');
-console.log('-------------')
-
-console.log('Plain Array MAP');
-var map = process.hrtime();
-array.map(function (i) {
-  return i * 2;
-});
-var mapend = process.hrtime(map);
-
-console.log('SuppedArray MAP');
-var supmap = process.hrtime();
-supped.map(function (i) {
-  return i * 2;
-});
-var supmapend = process.hrtime(supmap);
-
-console.log();
-
-console.log('Plain Array MAP complete in ' + format(mapend) + ', ops/s: ' + ops_per_sec(mapend));
-console.log('---------------------------------------------------------------------------------');
-console.log('Supped/Plain Ratio: ' + (ops_per_sec(supmapend) / ops_per_sec(mapend)).toFixed(2));
