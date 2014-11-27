@@ -58,7 +58,7 @@ PowerArray.prototype.numericSort = function () {
 };
 
 // Binary Search method, only works if array is sorted.
-PowerArray.prototype.binarySearch = function (elem) {
+PowerArray.prototype.binarySearch = function (searchElement) {
 
   var minIndex = 0;
   var maxIndex = this.length - 1;
