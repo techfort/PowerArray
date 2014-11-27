@@ -12,7 +12,16 @@ function loop(fun) {
 // PowerArray
 function PowerArray() {}
 PowerArray.prototype = new Array;
-PowerArray.prototype.forEach = loop.bind(this);
+PowerArray.prototype.forEach = function (fun) {
+  var i = 0,
+    len = this.length;
+
+  while (i < len) {
+    fun(this[i], i);
+    i += 1;
+  }
+
+};
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray();
   this.forEach(function (elem) {
