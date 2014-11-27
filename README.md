@@ -34,5 +34,6 @@ All Array native methods are available through PowerArray. The following methods
 
 `PowerArray.binarySearch`: performs a binary search on the elements of the array, only relevant if the array only consists of numbers. Thanks to [Oliver Caldwell's post](http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/) for a quick version of the algorithm. Also note the contribution of Yehonatan and other authors of comments to the post which helped to optimise the implementation of binary search further. 
 
-`PowerArray.numericSort`: sorts array (if array only contains integers), useful for utilizing `binarySearch`.
+`PowerArray.numericSort`: sorts array (if array only contains integers), useful for utilizing `binarySearch`. Optional sorting function argument.
 
+`PowerArray.addhAndSort`: adds a new value and sorts the array automatically

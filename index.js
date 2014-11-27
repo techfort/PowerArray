@@ -1,24 +1,19 @@
 'use strict';
 
-function loop(fun) {
-  var i = 0,
-    len = this.length;
-
-  for (i; i < len; i += 1) {
-    fun(this[i], i);
-  }
-}
-
 // PowerArray
 function PowerArray() {}
 PowerArray.prototype = new Array;
+PowerArray.prototype.addhAndSort = function (val) {
+  this.push(val);
+  this.numericSort();
+};
+
 PowerArray.prototype.forEach = function (fun) {
   var i = 0,
     len = this.length;
 
-  while (i < len) {
+  for (i; i < len; i++) {
     fun(this[i], i);
-    i += 1;
   }
 
 };
@@ -51,8 +46,8 @@ PowerArray.prototype.contains = function (elem) {
   return found;
 };
 
-PowerArray.prototype.numericSort = function () {
-  this.sort(function (a, b) {
+PowerArray.prototype.numericSort = function (fun) {
+  this.sort(fun || function (a, b) {
     return a < b ? -1 : 1;
   });
 };
