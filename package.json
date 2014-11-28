@@ -1,0 +1,26 @@
+{
+  "name": "powerarray",
+  "version": "0.1.1",
+  "description": "improved native array",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techfort/PowerArray.git"
+  },
+  "keywords": [
+    "javascript",
+    "arrays",
+    "performance",
+    "binary",
+    "search"
+  ],
+  "author": "joe minichino <joe.minichino@gmail.com>",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/techfort/PowerArray/issues"
+  },
+  "homepage": "https://github.com/techfort/PowerArray"
+}
