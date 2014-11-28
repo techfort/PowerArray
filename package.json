@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/techfort/PowerArray/issues"
   },
-  "homepage": "https://github.com/techfort/PowerArray"
+  "homepage": "https://github.com/techfort/PowerArray",
+  "dependencies": {
+    "mocha": "^2.0.1"
+  }
 }

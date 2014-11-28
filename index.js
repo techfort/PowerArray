@@ -142,4 +142,10 @@ PowerArray.prototype.binarySearch = function (searchElement) {
   return -1;
 };
 
+PowerArray.prototype.slice = function () {
+  var args = Array.prototype.slice.call(arguments),
+    results = Array.prototype.slice.apply(this, args);
+  return new PowerArray(results);
+};
+
 module.exports = PowerArray;

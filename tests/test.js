@@ -89,4 +89,14 @@ describe('PowerArray', function () {
 		});
 	});
 
+	describe('#slice', function () {
+		it('should slice the array and return a power array', function () {
+			var a = new PowerArray([1, 2, 3, 4]),
+				b = a.slice(1, 3);
+			assert.equal(2, b.length);
+			assert.equal(true, b instanceof PowerArray);
+			assert.equal(2, b[0]);
+		});
+	});
+
 });
