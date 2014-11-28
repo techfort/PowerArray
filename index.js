@@ -34,15 +34,15 @@ PowerArray.prototype.concat = function (arr) {
 };
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray();
-  this.forEach(function (elem) {
-    results.push(fun(elem));
+  this.forEach(function (elem, index) {
+    results.push(fun(elem, index));
   });
   return results;
 };
 PowerArray.prototype.filter = function (filterFun) {
   var results = new PowerArray();
-  this.forEach(function (elem) {
-    if (filterFun(elem)) {
+  this.forEach(function (elem, index) {
+    if (filterFun(elem, index)) {
       results.push(elem);
     }
   });
