@@ -1,8 +1,16 @@
 'use strict';
 
 // PowerArray
-function PowerArray() {}
+function PowerArray(array) {
+  var load = array || [],
+    self = this;
+  load.forEach(function (el) {
+    self.push(el);
+  });
+}
+
 PowerArray.prototype = new Array;
+
 PowerArray.prototype.addhAndSort = function (val) {
   this.push(val);
   this.numericSort();

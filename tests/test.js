@@ -38,4 +38,14 @@ describe('PowerArray', function () {
 		});
 	});
 
+	describe('load array from constructor', function () {
+		it('should load passed array', function () {
+			var a = new PowerArray(['a', 'b', 'c']);
+			assert.equal(3, a.length);
+			assert.equal('a', a[0]);
+			assert.equal('b', a[1]);
+			assert.equal('c', a[2]);
+		});
+	});
+
 });
