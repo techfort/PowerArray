@@ -20,7 +20,7 @@ PowerArray.prototype.forEach = function (fun) {
   var i = 0,
     len = this.length;
 
-  for (i; i < len; i++) {
+  for (; i < len; i++) {
     fun(this[i], i);
   }
 
