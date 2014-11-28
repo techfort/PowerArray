@@ -25,6 +25,13 @@ PowerArray.prototype.forEach = function (fun) {
   }
 
 };
+PowerArray.prototype.concat = function (arr) {
+  var results = new PowerArray(this);
+  arr.forEach(function (elem) {
+    results.push(elem);
+  });
+  return results;
+};
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray();
   this.forEach(function (elem) {

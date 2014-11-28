@@ -32,6 +32,19 @@ describe('PowerArray', function () {
 		});
 	});
 
+	describe('#concat', function () {
+		it('should concatenate', function () {
+			var result = array.concat([1,2,3]);
+			assert.equal(result.length, 12);
+			assert.equal(array.length, 9);
+			assert.equal(result[0], array[0]);
+			assert.equal(42, array[array.length - 1]);
+			assert.equal(result[9], 1);
+			assert.equal(result[10], 2);
+			assert.equal(result[11], 3);
+		});
+	});
+
 	describe('#binarySearch', function () {
 		it('element 12 should be in position 3', function () {
 			assert.equal(3, array.binarySearch(12));
