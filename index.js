@@ -118,7 +118,12 @@ PowerArray.prototype.numericSort = function (fun) {
   });
 };
 
-
+/**
+ * binarySearch performs a binary search on the sorted array
+ *
+ * @param {number} element to be found
+ * @returns {number} index of element
+ */
 PowerArray.prototype.binarySearch = function (searchElement) {
 
   var minIndex = 0;
@@ -142,9 +147,27 @@ PowerArray.prototype.binarySearch = function (searchElement) {
   return -1;
 };
 
+/**
+ * slice: re-implementation of native which returns a PowerArray
+ *
+ * @param {number} begin
+ * @param {number} [optional] end
+ * @returns {object} a PowerArray
+ */
 PowerArray.prototype.slice = function () {
   var args = Array.prototype.slice.call(arguments),
     results = Array.prototype.slice.apply(this, args);
+  return new PowerArray(results);
+};
+
+/**
+ *
+ *
+ *
+ */
+PowerArray.prototype.splice = function () {
+  var args = Array.prototype.slice.call(arguments),
+    results = Array.prototype.splice.apply(this, args);
   return new PowerArray(results);
 };
 

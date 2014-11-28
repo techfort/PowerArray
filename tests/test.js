@@ -99,4 +99,14 @@ describe('PowerArray', function () {
 		});
 	});
 
+	describe('#splice', function () {
+		it('should splice the array and return a power array', function () {
+			var a = new PowerArray([1, 2, 3, 4]),
+				b = a.splice(1, 3);
+			assert.equal(3, b.length);
+			assert.equal(true, b instanceof PowerArray);
+			assert.equal(2, b[0]);
+		});
+	});
+
 });
