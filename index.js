@@ -20,10 +20,17 @@ PowerArray.prototype.forEach = function (fun) {
   var i = 0,
     len = this.length;
 
-  for (i; i < len; i++) {
+  for (; i < len; i++) {
     fun(this[i], i);
   }
 
+};
+PowerArray.prototype.concat = function (arr) {
+  var results = new PowerArray(this);
+  arr.forEach(function (elem) {
+    results.push(elem);
+  });
+  return results;
 };
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray();
