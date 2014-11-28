@@ -37,3 +37,7 @@ All Array native methods are available through PowerArray. The following methods
 `PowerArray.numericSort`: sorts array (if array only contains integers), useful for utilizing `binarySearch`. Optional sorting function argument.
 
 `PowerArray.addhAndSort`: adds a new value and sorts the array automatically
+
+## Contribution
+
+Pull requests are more than welcome, just make sure to add a test in tests/test.js (and that it passes it obviously).
