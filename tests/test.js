@@ -32,6 +32,33 @@ describe('PowerArray', function () {
 		});
 	});
 
+	describe('#map', function () {
+		it('should iterate 10 times', function () {
+			var counter = 1;
+			var r = array.map(function (elem) {
+				counter += 1;
+				return elem*2;
+			});
+			assert.equal(10, counter);
+		});
+
+		it('should return a PowerArray', function () {
+			var r = array.map(function (elem) {
+				return elem*2;
+			});
+			assert.ok(r instanceof PowerArray);
+		});
+
+		it('should have access to index', function () {
+			var r = array.map(function (elem, index) {
+				return index;
+			});
+			assert.equal(r[0],0);
+			assert.equal(r[5],5);
+			assert.equal(r[8],8);
+		});
+	});
+
 	describe('#binarySearch', function () {
 		it('element 12 should be in position 3', function () {
 			assert.equal(3, array.binarySearch(12));
