@@ -3,6 +3,8 @@
 Turns out that you can re-write some of the methods of Array to obtain a much better performance than the native methods.
 In particular, Array.forEach seems to perform pretty badly.
 
+> Note: the overridden methods of PowerArray break compliance, the focus is on performance so take a look at the caveat section below.
+
 It looks as if a for loop with cached length is the fastest way of iterating.
 ```javascript
 var i, len = array.length;
@@ -41,3 +43,13 @@ All Array native methods are available through PowerArray. The following methods
 ## Contribution
 
 Pull requests are more than welcome, just make sure to add a test in tests/test.js (and that it passes it obviously).
+
+## Caveats
+
+Thanks to [David Souther](https://github.com/DavidSouther) for documenting these:
+
+1. No this context in fn calls, handle your own binding.
+2. No determination if i is a member of PowerArray (eg for sparse arrays, [2, 4, , 6])
+3. No exception is thrown when the callback isn't callable.
+
+There may be more, please feel free to flag those or include them yourself through a pull request.
