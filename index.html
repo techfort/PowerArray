@@ -34,21 +34,23 @@
 <p>Turns out that you can re-write some of the methods of Array to obtain a much better performance than the native methods.
 In particular, Array.forEach seems to perform pretty badly.</p>
 
+<blockquote>
+<p>Note: the overridden methods of PowerArray break compliance, the focus is on performance so take a look at the caveat section below.</p>
+</blockquote>
+
 <p>It looks as if a for loop with cached length is the fastest way of iterating.</p>
 
 <div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> i, len <span class="pl-k">=</span> array.<span class="pl-sc">length</span>;
 <span class="pl-k">for</span> (i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> len; i <span class="pl-k">+=</span> <span class="pl-c1">1</span>) {
-  someFun(array[len]);
+  someFun(array[i]);
 }</pre></div>
 
 <p>So I rewrote the Array class as PowerArray and implemented the above mechanism in PowerArray.forEach with surprising results.</p>
 
 <p>The results are as follows:
-PowerArray.forEach is averagely 5~10,000 times faster than native Array.
-PowerArray.forEach is averagely 700 times faster than a plain for loop.
-PowerArray.map is averagely more than 10,000 times faster than Array.map</p>
+PowerArray.forEach is averagely 5 times faster than native Array.</p>
 
-<p>This is only a proof of concept, future steps are re-creating Harmony 6 methods that depend on loops to improve speed.</p>
+<p>This is only a proof of concept.</p>
 
 <p>Install with <code>npm install powerarray</code></p>
 
@@ -68,30 +70,27 @@ PowerArray.map is averagely more than 10,000 times faster than Array.map</p>
 
 <p><code>PowerArray.binarySearch</code>: performs a binary search on the elements of the array, only relevant if the array only consists of numbers. Thanks to <a href="http://oli.me.uk/2013/06/08/searching-javascript-arrays-with-a-binary-search/">Oliver Caldwell's post</a> for a quick version of the algorithm. Also note the contribution of Yehonatan and other authors of comments to the post which helped to optimise the implementation of binary search further. </p>
 
-<p><code>PowerArray.numericSort</code>: sorts array (if array only contains integers), useful for utilizing <code>binarySearch</code>.</p>
+<p><code>PowerArray.numericSort</code>: sorts array (if array only contains integers), useful for utilizing <code>binarySearch</code>. Optional sorting function argument.</p>
 
-<p>This is a typical output from benchmark.js (over 10,000,000 size arrays)</p>
+<p><code>PowerArray.addhAndSort</code>: adds a new value and sorts the array automatically</p>
 
-<pre><code>Array.forEach complete in 0.531276637, ops/s: 1.8822585642891727e+7
-For loop complete in 0.033897401, ops/s: 2.950078680073437e+8
-SuppedArray complete in 0.000090165, ops/s: 1.1090778018077968e+11
----------------------------------------------------------------------------------
-Supped/ forEach ratio: 5892.271247157988
----------------------------------------------------------------------------------
-Supped/ for-loop ratio: 375.9485498807741
----------------------------------------------------------------------------------
+<h2>
+<a id="contribution" class="anchor" href="#contribution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribution</h2>
 
+<p>Pull requests are more than welcome, just make sure to add a test in tests/test.js (and that it passes it obviously).</p>
 
--------------
-MAP benchmark
--------------
-Plain Array MAP
-SuppedArray MAP
+<h2>
+<a id="caveats" class="anchor" href="#caveats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Caveats</h2>
 
-Plain Array MAP complete in 1.09191071, ops/s: 9.158258004448e+6
----------------------------------------------------------------------------------
-Supped/Plain Ratio: 10292.40
-</code></pre>
+<p>Thanks to <a href="https://github.com/DavidSouther">David Souther</a> for documenting these:</p>
+
+<ol>
+<li>No this context in fn calls, handle your own binding.</li>
+<li>No determination if i is a member of PowerArray (eg for sparse arrays, [2, 4, , 6])</li>
+<li>No exception is thrown when the callback isn't callable.</li>
+</ol>
+
+<p>There may be more, please feel free to flag those or include them yourself through a pull request.</p>
       </section>
     </div>
 
