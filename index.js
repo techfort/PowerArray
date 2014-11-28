@@ -1,12 +1,13 @@
 'use strict';
 
 // PowerArray
-function PowerArray(array) {
-  var load = array || [],
-    self = this;
-  load.forEach(function (el) {
-    self.push(el);
-  });
+function PowerArray(arr) {
+  if (arguments.length > 0) {
+    var self = this;
+    PowerArray.prototype.forEach.call(arr,function(elem) {
+      self.push(elem);
+    });
+  }
 }
 
 PowerArray.prototype = new Array;
@@ -23,8 +24,8 @@ PowerArray.prototype.forEach = function (fun) {
   for (i; i < len; i++) {
     fun(this[i], i);
   }
-
 };
+
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray();
   this.forEach(function (elem) {
