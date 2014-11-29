@@ -80,7 +80,8 @@ PowerArray.prototype.map = function (fun) {
  * @returns {array} filtered array
  */
 PowerArray.prototype.filter = function (filterFun) {
-  var results = new PowerArray();
+  var results = new PowerArray(),
+    i;
   for (i = 0; i < this.length; i += 1) {
     if (filterFun(this[i], i)) {
       results.push(this[i]);
