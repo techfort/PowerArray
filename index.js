@@ -30,7 +30,7 @@ PowerArray.prototype = new Array;
  * addAndSort inserts a value and sorts the array after insertion to keep binary search working
  * @param {number} val
  */
-PowerArray.prototype.addhAndSort = function (val) {
+PowerArray.prototype.addAndSort = function (val) {
   this.push(val);
   this.numericSort();
 };
@@ -162,9 +162,12 @@ PowerArray.prototype.slice = function () {
 };
 
 /**
+ * splice: re-implementation of native which returns a PowerArray
  *
- *
- *
+ * @param {number} begin
+ * @param {number} end
+ * @param {object} varargs, elements to add
+ * @returns {object} a PowerArray
  */
 PowerArray.prototype.splice = function () {
   var args = Array.prototype.slice.call(arguments),

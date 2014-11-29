@@ -38,7 +38,7 @@ All Array native methods are available through PowerArray. The following methods
 
 `PowerArray.numericSort`: sorts array (if array only contains integers), useful for utilizing `binarySearch`. Optional sorting function argument.
 
-`PowerArray.addhAndSort`: adds a new value and sorts the array automatically
+`PowerArray.addAndSort`: adds a new value and sorts the array automatically
 
 ## Contribution
 
