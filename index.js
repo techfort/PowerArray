@@ -66,8 +66,9 @@ PowerArray.prototype.concat = function (arr) {
  */
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray(),
+    len = this.length,
     i;
-  for (i = 0; i < this.length; i += 1) {
+  for (i = 0; i < len; i += 1) {
     results.push(fun(this[i], i));
   }
   return results;
@@ -81,8 +82,9 @@ PowerArray.prototype.map = function (fun) {
  */
 PowerArray.prototype.filter = function (filterFun) {
   var results = new PowerArray(),
+    len = this.length,
     i;
-  for (i = 0; i < this.length; i += 1) {
+  for (i = 0; i < len; i += 1) {
     if (filterFun(this[i], i)) {
       results.push(this[i]);
     }
