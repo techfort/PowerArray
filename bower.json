@@ -1,0 +1,25 @@
+{
+  "name": "PowerArray",
+  "main": "index.js",
+  "version": "0.1.2",
+  "homepage": "https://github.com/techfort/PowerArray",
+  "authors": [
+    "joe minichino <joe.minichino@gmail.com>"
+  ],
+  "description": "improved native array",
+  "keywords": [
+    "javascript",
+    "arrays",
+    "performance",
+    "binary",
+    "search"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
