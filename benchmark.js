@@ -18,7 +18,7 @@ function ops_per_sec(s) {
 }
 console.log('Populating arrays...');
 
-for (i; i < LEN; i += 1) {
+for (; i < LEN; i++) {
   var rnd = rand();
   array.push(rnd);
   supped.push(rnd);

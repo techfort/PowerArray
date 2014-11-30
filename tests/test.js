@@ -26,7 +26,7 @@ describe('PowerArray', function () {
 		it('should iterate 10 times', function () {
 			var counter = 1;
 			array.forEach(function () {
-				counter += 1;
+				counter++;
 			});
 			assert.equal(10, counter);
 		});
@@ -50,7 +50,7 @@ describe('PowerArray', function () {
 		it('should iterate 10 times', function () {
 			var counter = 1;
 			var r = array.map(function (elem) {
-				counter += 1;
+				counter++;
 				return elem * 2;
 			});
 			assert.equal(10, counter);
@@ -94,8 +94,8 @@ describe('PowerArray', function () {
 			var a = new PowerArray([1, 2, 3, 4]),
 				b = a.slice(1, 3);
 			assert.equal(2, b.length);
-			assert.equal(true, b instanceof PowerArray);
 			assert.equal(2, b[0]);
+			assert.ok(b instanceof PowerArray);
 		});
 	});
 
@@ -104,8 +104,8 @@ describe('PowerArray', function () {
 			var a = new PowerArray([1, 2, 3, 4]),
 				b = a.splice(1, 3);
 			assert.equal(3, b.length);
-			assert.equal(true, b instanceof PowerArray);
 			assert.equal(2, b[0]);
+			assert.ok(b instanceof PowerArray);
 		});
 	});
 

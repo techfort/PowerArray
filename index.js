@@ -66,8 +66,9 @@ PowerArray.prototype.concat = function (arr) {
  */
 PowerArray.prototype.map = function (fun) {
   var results = new PowerArray(),
-    i;
-  for (i = 0; i < this.length; i += 1) {
+    i = 0,
+		len = this.length;
+  for (; i < len; i++) {
     results.push(fun(this[i], i));
   }
   return results;
@@ -81,8 +82,9 @@ PowerArray.prototype.map = function (fun) {
  */
 PowerArray.prototype.filter = function (filterFun) {
   var results = new PowerArray(),
-    i;
-  for (i = 0; i < this.length; i += 1) {
+    i = 0,
+		len = this.length;
+  for (; i < len; i++) {
     if (filterFun(this[i], i)) {
       results.push(this[i]);
     }
@@ -100,7 +102,7 @@ PowerArray.prototype.contains = function (elem) {
   var i = 0,
     len = this.length,
     found = false;
-  for (i; i < len; i += 1) {
+  for (; i < len; i++) {
     if (this[i] === elem) {
       found = true;
       break;
