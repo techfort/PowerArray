@@ -5,11 +5,9 @@
  * License: BSD
  */
 
-'use strict';
-
-"use strict";
-
 (function() {
+  'use strict';
+
   var root = this;
 
   /**
@@ -28,7 +26,7 @@
   /*
    * inheritance
    */
-  PowerArray.prototype = new Array;
+  PowerArray.prototype = new Array();
 
   /**
    * addAndSort inserts a value and sorts the array after insertion to keep binary search working
@@ -92,7 +90,7 @@
       }
     }
     return results;
-  }
+  };
 
   /**
    * contains: returns whether the array contains an element or not
@@ -179,13 +177,18 @@
     return new PowerArray(results);
   };
 
-  if( typeof exports !== 'undefined' ) {
-    if( typeof module !== 'undefined' && module.exports ) {
-      module.exports = PowerArray;
-    }
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = PowerArray;
   }
   else {
-    root.PowerArray = PowerArray
+    if (typeof define === 'function' && define.amd) {
+      define([], function() {
+        return PowerArray;
+      });
+    }
+    else {
+      root.PowerArray = PowerArray;
+    }
   }
 
 }).call(this);
