@@ -15,10 +15,12 @@
  */
 function PowerArray(array) {
   var load = array || [],
+    i = 0,
+    len = load.length,
     self = this;
-  load.forEach(function (el) {
-    self.push(el);
-  });
+  for (; i < len; i++) {
+    self.push(load[i]);
+  }
 }
 
 /*
@@ -48,12 +50,13 @@ PowerArray.prototype.forEach = function (fun) {
   }
 };
 
-
 PowerArray.prototype.concat = function (arr) {
-  var results = new PowerArray(this);
-  arr.forEach(function (elem) {
-    results.push(elem);
-  });
+  var results = new PowerArray(this),
+    i = 0,
+    len = arr.length;
+  for (; i < len; i++) {
+    results.push(arr[i]);
+  }
   return results;
 };
 
