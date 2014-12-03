@@ -94,12 +94,12 @@
   };
 
   /**
-   * contains: returns whether the array contains an element or not
+   * includes: returns whether the array includes an element or not
    *
    * @param element
-   * @returns {boolean} is the element contained or not
+   * @returns {boolean} is the element included or not
    */
-  PowerArray.prototype.contains = function (elem) {
+  PowerArray.prototype.includes = function (elem) {
     var i = 0,
       len = this.length,
       found = false;
