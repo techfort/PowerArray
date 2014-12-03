@@ -113,6 +113,11 @@
   };
 
   /**
+   * contains: alias of includes for legacy users
+   */
+  PowerArray.prototype.contains = PowerArray.prototype.includes;
+
+  /**
    * numericSort: sorts the array if the array is numerical
    *
    */
